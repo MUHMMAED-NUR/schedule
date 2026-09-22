@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>جدول المحاضرات الأسبوعي</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .schedule-card {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      max-width: 1050px;
+      overflow-x: auto;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .header h2 {
+      margin: 0;
+      color: #1e293b;
+      font-size: 24px;
+    }
+    .header p {
+      margin: 6px 0 0;
+      color: #64748b;
+      font-size: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    th {
+      background: #2563eb;
+      color: #ffffff;
+      padding: 14px 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: right;
+    }
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #e2e8f0;
+      color: #334155;
+      font-size: 13.5px;
+      vertical-align: middle;
+    }
+    tr:nth-child(even) td {
+      background-color: #f8fafc;
+    }
+    tr:hover td {
+      background-color: #eff6ff;
+    }
+    .badge-day {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: #e0e7ff;
+      color: #3730a3;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .time-text {
+      direction: ltr;
+      display: inline-block;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .en-name {
+      color: #64748b;
+      font-size: 12.5px;
+      direction: ltr;
+      text-align: right;
+    }
+    .code-tag {
+      font-family: monospace;
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #475569;
+    }
+    .cal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #0284c7;
+      color: #ffffff;
+      border: none;
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .cal-btn:hover {
+      background-color: #0369a1;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+    }
+    .cal-btn:active {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="schedule-card">
+    <div class="header">
+      <h2>البرنامج الأسبوعي للمحاضرات</h2>
+      <p>فصل خريف F25</p>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>اليوم</th>
+          <th>التوقيت</th>
+          <th>المادة (بالعربية)</th>
+          <th>Course (English)</th>
+          <th>الشعبة والرمز</th>
+          <th>المدرّس</th>
+          <th>التقويم</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge-day">الأحد</span></td>
+          <td><span class="time-text">08:00 - 10:00</span></td>
+          <td><strong>الفيزياء</strong></td>
+          <td class="en-name">Physics</td>
+          <td><span class="code-tag">ITE_BPH401_C24_F25</span></td>
+          <td>Mohammad saeed marouf</td>
+          <td>
+            <button class="cal-btn" onclick="addToGoogleCalendar(0, '08:00', '10:00', 'محاضرة: الفيزياء (Physics)', 'ITE_BPH401_C24_F25', 'Mohammad saeed marouf')">
+              📅 إضافة تذكير
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge-day">الإثنين</span></td>
+          <td><span class="time-text">20:00 - 22:00</span></td>
+          <td><strong>مدخل إلى التعليم الإلكتروني</strong></td>
+          <td class="en-name">Introduction to On-Line Education</td>
+          <td><span class="code-tag">ITE_GOE301_C12_F25</span></td>
+          <td>Rasha Abdlrazzak Alsaleh</td>
+          <td>
+            <button class="cal-btn" onclick="addToGoogleCalendar(1, '20:00', '22:00', 'محاضرة: مدخل إلى التعليم الإلكتروني (Introduction to On-Line Education)', 'ITE_GOE301_C12_F25', 'Rasha Abdlrazzak Alsaleh')">
+              📅 إضافة تذكير
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge-day">الإثنين</span></td>
+          <td><span class="time-text">22:00 - 24:00</span></td>
+          <td><strong>مهارات الحاسوب (ICDL)</strong></td>
+          <td class="en-name">Computer Skills-ICDL</td>
+          <td><span class="code-tag">ITE_GCS301_C12_F25</span></td>
+          <td>betol khaled Alabdullah</td>
+          <td>
+            <button class="cal-btn" onclick="addToGoogleCalendar(1, '22:00', '23:59', 'محاضرة: مهارات الحاسوب (Computer Skills-ICDL)', 'ITE_GCS301_C12_F25', 'betol khaled Alabdullah')">
+              📅 إضافة تذكير
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge-day">الثلاثاء</span></td>
+          <td><span class="time-text">10:00 - 12:00</span></td>
+          <td><strong>البنى الجبرية</strong></td>
+          <td class="en-name">Algebraic Structures</td>
+          <td><span class="code-tag">ITE_BAS401_C15_F25</span></td>
+          <td>Nidal Yacoub Chamoun</td>
+          <td>
+            <button class="cal-btn" onclick="addToGoogleCalendar(2, '10:00', '12:00', 'محاضرة: البنى الجبرية (Algebraic Structures)', 'ITE_BAS401_C15_F25', 'Nidal Yacoub Chamoun')">
+              📅 إضافة تذكير
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge-day">الثلاثاء</span></td>
+          <td><span class="time-text">12:00 - 14:00</span></td>
+          <td><strong>البرمجة 1</strong></td>
+          <td class="en-name">Programming I</td>
+          <td><span class="code-tag">ITE_BPG401_C17_F25</span></td>
+          <td>Houssam Ahmad Fawal</td>
+          <td>
+            <button class="cal-btn" onclick="addToGoogleCalendar(2, '12:00', '14:00', 'محاضرة: البرمجة 1 (Programming I)', 'ITE_BPG401_C17_F25', 'Houssam Ahmad Fawal')">
+              📅 إضافة تذكير
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge-day">الأربعاء</span></td>
+          <td><span class="time-text">10:00 - 12:00</span></td>
+          <td><strong>التحليل الرياضي 1</strong></td>
+          <td class="en-name">Mathematical Analysis I</td>
+          <td><span class="code-tag">ITE_BMA401_C6_F25</span></td>
+          <td>lama -nazem aldroubi</td>
+          <td>
+            <button class="cal-btn" onclick="addToGoogleCalendar(3, '10:00', '12:00', 'محاضرة: التحليل الرياضي 1 (Mathematical Analysis I)', 'ITE_BMA401_C6_F25', 'lama -nazem aldroubi')">
+              📅 إضافة تذكير
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    /**
+     * targetDay: 0 = الأحد, 1 = الإثنين, 2 = الثلاثاء, 3 = الأربعاء, ...
+     */
+    function addToGoogleCalendar(targetDay, startTimeStr, endTimeStr, title, code, instructor) {
+      const now = new Date();
+      const currentDay = now.getDay();
+      
+      const [startHour, startMin] = startTimeStr.split(':').map(Number);
+      const [endHour, endMin] = endTimeStr.split(':').map(Number);
+      
+      // حساب فارق الأيام للوصول إلى اليوم القادم المطلوب
+      let daysAhead = (targetDay - currentDay + 7) % 7;
+      
+      // إذا كان الموعد اليوم ولكن وقته انتهى، نجعله للأسبوع القادم
+      if (daysAhead === 0) {
+        const lectureTimeToday = new Date(now.getFullYear(), now.getMonth(), now.getDate(), startHour, startMin);
+        if (now > lectureTimeToday) {
+          daysAhead = 7;
+        }
+      }
+
+      // تحديد تاريخ الجلسة
+      const eventDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + daysAhead);
+      
+      const pad = (n) => String(n).padStart(2, '0');
+      
+      const year = eventDate.getFullYear();
+      const month = pad(eventDate.getMonth() + 1);
+      const day = pad(eventDate.getDate());
+      
+      const startIso = `${year}${month}${day}T${pad(startHour)}${pad(startMin)}00`;
+      const endIso = `${year}${month}${day}T${pad(endHour)}${pad(endMin)}00`;
+      
+      const details = `الشعبة والرمز: ${code}\nالمدرّس: ${instructor}`;
+      
+      // بناء رابط تقويم جوجل
+      const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE` +
+        `&text=${encodeURIComponent(title)}` +
+        `&dates=${startIso}/${endIso}` +
+        `&details=${encodeURIComponent(details)}`;
+      
+      window.open(googleCalUrl, '_blank');
+    }
+  </script>
+
+</body>
+</html>
