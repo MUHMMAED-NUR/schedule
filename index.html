@@ -140,6 +140,19 @@
       </thead>
       <tbody>
         <tr>
+          <td><span class="badge-day">السبت</span></td>
+          <td><span class="time-text">08:00 - 10:00</span></td>
+          <td><strong>مدخل إلى التعليم الإلكتروني</strong></td>
+          <td class="en-name">Introduction to On-Line Education</td>
+          <td><span class="code-tag">ITE_GOE301_C16_F25</span></td>
+          <td>t_dnaboush</td>
+          <td>
+            <button class="cal-btn" onclick="addToGoogleCalendar(6, '08:00', '10:00', 'محاضرة: مدخل إلى التعليم الإلكتروني (Introduction to On-Line Education)', 'ITE_GOE301_C16_F25', 't_dnaboush')">
+              📅 إضافة تذكير
+            </button>
+          </td>
+        </tr>
+        <tr>
           <td><span class="badge-day">الأحد</span></td>
           <td><span class="time-text">08:00 - 10:00</span></td>
           <td><strong>الفيزياء</strong></td>
@@ -148,32 +161,6 @@
           <td>Mohammad saeed marouf</td>
           <td>
             <button class="cal-btn" onclick="addToGoogleCalendar(0, '08:00', '10:00', 'محاضرة: الفيزياء (Physics)', 'ITE_BPH401_C24_F25', 'Mohammad saeed marouf')">
-              📅 إضافة تذكير
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td><span class="badge-day">الإثنين</span></td>
-          <td><span class="time-text">20:00 - 22:00</span></td>
-          <td><strong>مدخل إلى التعليم الإلكتروني</strong></td>
-          <td class="en-name">Introduction to On-Line Education</td>
-          <td><span class="code-tag">ITE_GOE301_C12_F25</span></td>
-          <td>Rasha Abdlrazzak Alsaleh</td>
-          <td>
-            <button class="cal-btn" onclick="addToGoogleCalendar(1, '20:00', '22:00', 'محاضرة: مدخل إلى التعليم الإلكتروني (Introduction to On-Line Education)', 'ITE_GOE301_C12_F25', 'Rasha Abdlrazzak Alsaleh')">
-              📅 إضافة تذكير
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td><span class="badge-day">الإثنين</span></td>
-          <td><span class="time-text">22:00 - 24:00</span></td>
-          <td><strong>مهارات الحاسوب (ICDL)</strong></td>
-          <td class="en-name">Computer Skills-ICDL</td>
-          <td><span class="code-tag">ITE_GCS301_C12_F25</span></td>
-          <td>betol khaled Alabdullah</td>
-          <td>
-            <button class="cal-btn" onclick="addToGoogleCalendar(1, '22:00', '23:59', 'محاضرة: مهارات الحاسوب (Computer Skills-ICDL)', 'ITE_GCS301_C12_F25', 'betol khaled Alabdullah')">
               📅 إضافة تذكير
             </button>
           </td>
@@ -217,13 +204,26 @@
             </button>
           </td>
         </tr>
+        <tr>
+          <td><span class="badge-day">الأربعاء</span></td>
+          <td><span class="time-text">22:00 - 24:00</span></td>
+          <td><strong>مهارات الحاسوب (ICDL)</strong></td>
+          <td class="en-name">Computer Skills-ICDL</td>
+          <td><span class="code-tag">ITE_GCS301_C9_F25</span></td>
+          <td>t_mmayhop</td>
+          <td>
+            <button class="cal-btn" onclick="addToGoogleCalendar(3, '22:00', '23:59', 'محاضرة: مهارات الحاسوب (Computer Skills-ICDL)', 'ITE_GCS301_C9_F25', 't_mmayhop')">
+              📅 إضافة تذكير
+            </button>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
 
   <script>
     /**
-     * targetDay: 0 = الأحد, 1 = الإثنين, 2 = الثلاثاء, 3 = الأربعاء, ...
+     * targetDay: 0 = الأحد, 1 = الإثنين, 2 = الثلاثاء, 3 = الأربعاء, 4 = الخميس, 5 = الجمعة, 6 = السبت
      */
     function addToGoogleCalendar(targetDay, startTimeStr, endTimeStr, title, code, instructor) {
       const now = new Date();
@@ -232,10 +232,8 @@
       const [startHour, startMin] = startTimeStr.split(':').map(Number);
       const [endHour, endMin] = endTimeStr.split(':').map(Number);
       
-      // حساب فارق الأيام للوصول إلى اليوم القادم المطلوب
       let daysAhead = (targetDay - currentDay + 7) % 7;
       
-      // إذا كان الموعد اليوم ولكن وقته انتهى، نجعله للأسبوع القادم
       if (daysAhead === 0) {
         const lectureTimeToday = new Date(now.getFullYear(), now.getMonth(), now.getDate(), startHour, startMin);
         if (now > lectureTimeToday) {
@@ -243,7 +241,6 @@
         }
       }
 
-      // تحديد تاريخ الجلسة
       const eventDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + daysAhead);
       
       const pad = (n) => String(n).padStart(2, '0');
@@ -257,7 +254,6 @@
       
       const details = `الشعبة والرمز: ${code}\nالمدرّس: ${instructor}`;
       
-      // بناء رابط تقويم جوجل
       const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE` +
         `&text=${encodeURIComponent(title)}` +
         `&dates=${startIso}/${endIso}` +
