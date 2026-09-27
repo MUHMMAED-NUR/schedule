@@ -81,6 +81,14 @@
       font-size: 18px;
       font-weight: 700;
     }
+    .card-title span {
+      background: #e0e7ff;
+      color: #3730a3;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
@@ -216,6 +224,7 @@
       <div class="schedule-card">
         <div class="card-title">
           <h3>جدول المحاضرات الأسبوعي</h3>
+          <span>6 مقررات</span>
         </div>
         <table>
           <thead>
@@ -231,40 +240,27 @@
           </thead>
           <tbody>
             <tr>
+              <td><span class="badge-day">السبت</span></td>
+              <td><span class="time-text">08:00 - 10:00</span></td>
+              <td><strong>مدخل إلى التعليم الإلكتروني</strong></td>
+              <td class="en-name">Introduction to On-Line Education</td>
+              <td><span class="code-tag">ITE_GOE301_C16_F25</span></td>
+              <td>Douaa Youssef Naboush</td>
+              <td>
+                <button class="cal-btn" onclick="addToGoogleCalendar(6, '08:00', '10:00', 'محاضرة: مدخل إلى التعليم الإلكتروني (Introduction to On-Line Education)', 'ITE_GOE301_C16_F25', 'Douaa Youssef Naboush')">
+                  📅 إضافة تذكير
+                </button>
+              </td>
+            </tr>
+            <tr>
               <td><span class="badge-day">الأحد</span></td>
               <td><span class="time-text">08:00 - 10:00</span></td>
               <td><strong>الفيزياء</strong></td>
               <td class="en-name">Physics</td>
               <td><span class="code-tag">ITE_BPH401_C24_F25</span></td>
-              <td>Mohammad saeed marouf</td>
+              <td>Mohammad saeed mustafa marouf</td>
               <td>
-                <button class="cal-btn" onclick="addToGoogleCalendar(0, '08:00', '10:00', 'محاضرة: الفيزياء (Physics)', 'ITE_BPH401_C24_F25', 'Mohammad saeed marouf')">
-                  📅 إضافة تذكير
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="badge-day">الإثنين</span></td>
-              <td><span class="time-text">20:00 - 22:00</span></td>
-              <td><strong>مدخل إلى التعليم الإلكتروني</strong></td>
-              <td class="en-name">Introduction to On-Line Education</td>
-              <td><span class="code-tag">ITE_GOE301_C12_F25</span></td>
-              <td>Rasha Abdlrazzak Alsaleh</td>
-              <td>
-                <button class="cal-btn" onclick="addToGoogleCalendar(1, '20:00', '22:00', 'محاضرة: مدخل إلى التعليم الإلكتروني (Introduction to On-Line Education)', 'ITE_GOE301_C12_F25', 'Rasha Abdlrazzak Alsaleh')">
-                  📅 إضافة تذكير
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="badge-day">الإثنين</span></td>
-              <td><span class="time-text">22:00 - 24:00</span></td>
-              <td><strong>مهارات الحاسوب (ICDL)</strong></td>
-              <td class="en-name">Computer Skills-ICDL</td>
-              <td><span class="code-tag">ITE_GCS301_C12_F25</span></td>
-              <td>betol khaled Alabdullah</td>
-              <td>
-                <button class="cal-btn" onclick="addToGoogleCalendar(1, '22:00', '23:59', 'محاضرة: مهارات الحاسوب (Computer Skills-ICDL)', 'ITE_GCS301_C12_F25', 'betol khaled Alabdullah')">
+                <button class="cal-btn" onclick="addToGoogleCalendar(0, '08:00', '10:00', 'محاضرة: الفيزياء (Physics)', 'ITE_BPH401_C24_F25', 'Mohammad saeed mustafa marouf')">
                   📅 إضافة تذكير
                 </button>
               </td>
@@ -304,6 +300,19 @@
               <td>lama -nazem aldroubi</td>
               <td>
                 <button class="cal-btn" onclick="addToGoogleCalendar(3, '10:00', '12:00', 'محاضرة: التحليل الرياضي 1 (Mathematical Analysis I)', 'ITE_BMA401_C6_F25', 'lama -nazem aldroubi')">
+                  📅 إضافة تذكير
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge-day">الأربعاء</span></td>
+              <td><span class="time-text">22:00 - 24:00</span></td>
+              <td><strong>مهارات الحاسوب (ICDL)</strong></td>
+              <td class="en-name">Computer Skills-ICDL</td>
+              <td><span class="code-tag">ITE_GCS301_C9_F25</span></td>
+              <td>Muhannad Ebrahim Mayhop</td>
+              <td>
+                <button class="cal-btn" onclick="addToGoogleCalendar(3, '22:00', '23:59', 'محاضرة: مهارات الحاسوب (Computer Skills-ICDL)', 'ITE_GCS301_C9_F25', 'Muhannad Ebrahim Mayhop')">
                   📅 إضافة تذكير
                 </button>
               </td>
@@ -425,6 +434,10 @@
   </div>
 
   <script>
+    /**
+     * تذكير المحاضرات الأسبوعية
+     * targetDay: 0 = الأحد, 1 = الإثنين, 2 = الثلاثاء, 3 = الأربعاء, 4 = الخميس, 5 = الجمعة, 6 = السبت
+     */
     function addToGoogleCalendar(targetDay, startTimeStr, endTimeStr, title, code, instructor) {
       const now = new Date();
       const currentDay = now.getDay();
